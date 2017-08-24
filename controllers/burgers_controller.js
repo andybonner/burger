@@ -1,14 +1,19 @@
 var express = require("express");
 var router = express.Router();
 
+// Import model
 var burger = require("../models/burger");
 
 
 router.get("/", function(req, res){
   burger.selectAll(function(dbResults){
     console.log(dbResults);
-    // change to res.render
-  })
+    var hbarsObj = {
+      burgers: dbResults
+    }
+    // change the following to res.render and engage handlebars
+    res.render("index", hbarsObj);
+  });
 });
 
 // router.post();
@@ -16,7 +21,7 @@ router.get("/", function(req, res){
 // router.put();
 
 
-module.exports.router = router;
+module.exports = router;
 // is imported by server.js
 
 // possible CRUD interactions:

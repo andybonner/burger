@@ -1,6 +1,6 @@
 var express = require("express");
-var methodOverride = require("method-override");
 var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 
 var port = 8080;
 var app = express();
@@ -17,8 +17,11 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-var routes = require("./controllers/burgers_controller.js");
+var routes = require("./controllers/burgers_controller");
 
 app.use("/", routes);
 
-app.listen(port);
+app.listen(port, function(){
+  console.log("Listening on port", port);
+});
+// add "listening" console statement
