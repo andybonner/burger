@@ -10,6 +10,9 @@ app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Override with POST
+app.use(methodOverride("_method"));
+
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
@@ -24,4 +27,3 @@ app.use("/", routes);
 app.listen(port, function(){
   console.log("Listening on port", port);
 });
-// add "listening" console statement
